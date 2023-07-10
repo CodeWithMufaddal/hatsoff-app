@@ -1,10 +1,14 @@
 {
   "expo": {
+    "userInterfaceStyle": "automatic",
     "scheme": "acme",
     "web": {
       "bundler": "metro"
     },
     "name": "hatsoff-app",
-    "slug": "hatsoff-app"
+    "slug": "hatsoff-app",
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
