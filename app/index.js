@@ -9,9 +9,11 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView } from 'react-native';
 import { FlatList } from 'react-native';
 import Tabs from '../components/Tabs/Tabs';
+import { TouchableOpacity } from 'react-native';
 
 
 const index = () => {
+    const router = useRouter()
     return (
         <ImageBackground source={images.bgHome} style={styles.backgroundImage}>
             <LinearGradient start={{ x: 1, y: 0 }} end={{ x: 0, y: 1 }} locations={[0, 1]} colors={['rgba(0,0,0,1)', 'transparent']} style={styles.linearGradient}>
@@ -19,16 +21,18 @@ const index = () => {
                     <Stack.Screen
                         options={{
                             headerLeft: () => (
-                                <Image
-                                    source={icons.logo}
-                                    style={styles.logo}
-                                    resizeMode="contain"
-                                />
+                                <TouchableOpacity  onPress={() => router.push(`/`)}>
+                                    <Image
+                                        source={icons.logo}
+                                        style={styles.logo}
+                                        resizeMode="contain"
+                                    />
+                                </TouchableOpacity>
                             ),
                             headerRight: () => (
                                 <View style={{ flexDirection: 'row', }}>
                                     <ScreenHeaderBtn iconUrl={icons.lightbulb} dimension="70%" />
-                                    <ScreenHeaderBtn iconUrl={icons.bell} dimension="70%" />
+                                    <ScreenHeaderBtn iconUrl={icons.bell} dimension="70%" handleNavigate={() => router.push(`/Notification`)} />
                                     <ScreenHeaderBtn iconUrl={icons.menu} dimension="70%" />
                                 </View>
                             ),
@@ -39,9 +43,9 @@ const index = () => {
                         <Welcome
 
                         />
-                        
+
                     </ScrollView>
-                    <Tabs  />
+                    <Tabs />
                     {/* <Tabs>
                         <Tabs.Screen name='HOME'/>
                         <Tabs.Screen name='home'/>
